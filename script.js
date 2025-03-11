@@ -13,8 +13,15 @@ window.addEventListener("load", () => {
       updateDisplayFromContext(e.textContent)
     }))
 
+    let operateurs = document.querySelectorAll(".calculator__keys.key--operator button")
+
     function updateDisplayFromContext(a) {
-      document.getElementById("ecran").innerHTML = a
+      let affichage = document.getElementById("ecran").innerHTML
+      if (affichage == 0) {
+        document.getElementById("ecran").innerHTML = a}
+      else {
+        document.getElementById("ecran").innerHTML += a
+      }
   }
 }
 )
