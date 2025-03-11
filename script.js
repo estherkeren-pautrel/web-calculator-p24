@@ -8,8 +8,16 @@
 window.addEventListener("load", () => {
     //let elements = document.getElementsByClassName("calculator__keys")
     let elements = document.querySelectorAll(".calculator__keys button")
-    elements.forEach((e)=> e.addEventListener("click", () => console.log(e.textContent)))
-  })
+    elements.forEach((e)=> e.addEventListener("click", () => {
+      console.log(e.textContent);
+      updateDisplayFromContext(e.textContent)
+    }))
+
+    function updateDisplayFromContext(a) {
+      document.getElementById("ecran").innerHTML = a
+  }
+}
+)
 
 //ETAPES A FAIRE
 //pouvoir clicker sur les chiffres : console.log => attraper evt click
