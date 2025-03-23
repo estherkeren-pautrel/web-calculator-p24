@@ -24,6 +24,11 @@ window.addEventListener("load", () => {
         console.log(resultat)
         document.getElementById("ecran").innerHTML = e.textContent
       }
+      else if (operateur == "moins") {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat = (+terme) - (+e.textContent);
+        document.getElementById("ecran").innerHTML = e.textContent
+      }
       operateur = "aucun"
     }))
 
@@ -31,10 +36,14 @@ window.addEventListener("load", () => {
 
     plus.addEventListener("click", () => {
       operateur = "plus"
-      resultat = document.getElementById("ecran").innerHTML
-      console.log(resultat)
-      console.log(operateur)
     })
+
+    let moins = document.querySelector("[data-action='subtract']");
+
+    moins.addEventListener("click", () => {
+      operateur = "moins"
+    })
+
 
     let equal = document.querySelector("[data-action='calculate']");
     equal.addEventListener("click", () => {
