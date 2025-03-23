@@ -113,5 +113,7 @@ window.addEventListener("load", () => {
     
 
 //ETAPES A FAIRE
+//gérer les nb à plusieurs chiffres 
+
 //on termine par le décimal, le . ce n'est que pour la fin!!
 //commiter à chaque fois à partir de chaque étape
