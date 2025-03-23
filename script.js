@@ -5,26 +5,51 @@
 // # START EDITING YOUR JAVASCRIPT HERE
 // ===============
 
+/* */
 window.addEventListener("load", () => {
     //let elements = document.getElementsByClassName("calculator__keys")
-    let elements = document.querySelectorAll(".calculator__keys button")
+    let elements = document.querySelectorAll(".chiffre")
+
+    let operateur = "aucun"
+    console.log(operateur)
+    let resultat = 0
+
     elements.forEach((e)=> e.addEventListener("click", () => {
-      console.log(e.textContent);
-      updateDisplayFromContext(e.textContent)
+      if (operateur == "aucun"){
+        updateDisplayFromContext(e.textContent)
+      }
+      else if (operateur == "plus") {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat = (+terme) + (+e.textContent);
+        console.log(resultat)
+        document.getElementById("ecran").innerHTML = e.textContent
+      }
+      operateur = "aucun"
     }))
 
-    let operateurs = document.querySelectorAll(".calculator__keys.key--operator button")
+    let plus = document.querySelector("[data-action='add']");
+
+    plus.addEventListener("click", () => {
+      operateur = "plus"
+      resultat = document.getElementById("ecran").innerHTML
+      console.log(resultat)
+      console.log(operateur)
+    })
+
+    let equal = document.querySelector("[data-action='calculate']");
+    equal.addEventListener("click", () => {
+      document.getElementById("ecran").innerHTML = resultat
+    })
 
     function updateDisplayFromContext(a) {
-      let affichage = document.getElementById("ecran").innerHTML
-      if (affichage == 0) {
-        document.getElementById("ecran").innerHTML = a}
-      else {
-        document.getElementById("ecran").innerHTML += a
+        let affichage = document.getElementById("ecran").innerHTML
+        if (affichage == 0) {
+         document.getElementById("ecran").innerHTML = a} 
+       else {document.getElementById("ecran").innerHTML += a}
       }
-  }
-}
-)
+
+  })
+    
 
 //ETAPES A FAIRE
 //pouvoir clicker sur les chiffres : console.log => attraper evt click
