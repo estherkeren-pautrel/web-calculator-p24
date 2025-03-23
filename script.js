@@ -11,57 +11,96 @@ window.addEventListener("load", () => {
     let elements = document.querySelectorAll(".chiffre")
 
     let operateur = "aucun"
-    console.log(operateur)
     let resultat = 0
+    let debut = true
 
     elements.forEach((e)=> e.addEventListener("click", () => {
       if (operateur == "aucun"){
         updateDisplayFromContext(e.textContent)
       }
-      else if (operateur == "plus") {
-        let terme = document.getElementById("ecran").innerHTML;
-        resultat = (+terme) + (+e.textContent);
-        console.log(resultat)
+      else {
         document.getElementById("ecran").innerHTML = e.textContent
       }
-      else if (operateur == "moins") {
-        let terme = document.getElementById("ecran").innerHTML;
-        resultat = (+terme) - (+e.textContent);
-        document.getElementById("ecran").innerHTML = e.textContent
-      }
-      else if (operateur == "moins") {
-        let terme = document.getElementById("ecran").innerHTML;
-        resultat = (+terme) - (+e.textContent);
-        document.getElementById("ecran").innerHTML = e.textContent
-      }
-      operateur = "aucun"
+      console.log(resultat)
     }))
 
     let plus = document.querySelector("[data-action='add']");
-
     plus.addEventListener("click", () => {
+      result()
       operateur = "plus"
+      console.log(resultat)
+      debut = false
     })
 
     let moins = document.querySelector("[data-action='subtract']");
-
     moins.addEventListener("click", () => {
+      result()
       operateur = "moins"
+      console.log(resultat)
+      debut = false
     })
 
-
-    let equal = document.querySelector("[data-action='calculate']");
-    equal.addEventListener("click", () => {
-      document.getElementById("ecran").innerHTML = resultat
-      operateur = "equal"
+    let fois = document.querySelector("[data-action='multiply']");
+    fois.addEventListener("click", () => {
+      result()
+      operateur = "fois"
+      console.log(resultat)
+      debut = false
     })
+
+    let diviser = document.querySelector("[data-action='divide']");
+    diviser.addEventListener("click", () => {
+      result()
+      operateur = "diviser"
+      console.log(resultat)
+      debut = false
+    })
+    //empêcher la division par 0...
 
     let clear = document.querySelector("[data-action='clear']");
     clear.addEventListener("click", () => {
       resultat = 0
       document.getElementById("ecran").innerHTML = resultat
       operateur = "aucun"
+      debut = true
     })
+
+    let equal = document.querySelector("[data-action='calculate']");
+    equal.addEventListener("click", () => {
+      if (operateur == "aucun"){
+        document.getElementById("ecran").innerHTML = 0
+      }
+      else {
+        result()
+        console.log(resultat)
+        document.getElementById("ecran").innerHTML = resultat 
+      }
+    })
+
+    function result() {
+      if (debut) {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat = (+terme);
+      }
+      else if (operateur == "plus") {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat += (+terme);
+        console.log(resultat)
+      }
+      else if (operateur == "moins") {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat = resultat - (+terme);
+      }
+      else if (operateur == "fois") {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat = resultat * (+terme);
+      }
+      else if (operateur == "diviser") {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat = resultat / (+terme);
+      }
+    }
+
 
     function updateDisplayFromContext(a) {
         let affichage = document.getElementById("ecran").innerHTML
