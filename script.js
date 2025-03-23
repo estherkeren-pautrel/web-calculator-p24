@@ -112,7 +112,7 @@ window.addEventListener("load", () => {
     
 
 //ETAPES A FAIRE
-//gérer les nb à plusieurs chiffres 
-
+//jpp continuer le calcul après le =... 
+//gérer avec nlle var que ca fasse pas moche après un opérateur... 
 //on termine par le décimal, le . ce n'est que pour la fin!!
 //commiter à chaque fois à partir de chaque étape
