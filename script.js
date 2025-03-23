@@ -29,6 +29,11 @@ window.addEventListener("load", () => {
         resultat = (+terme) - (+e.textContent);
         document.getElementById("ecran").innerHTML = e.textContent
       }
+      else if (operateur == "moins") {
+        let terme = document.getElementById("ecran").innerHTML;
+        resultat = (+terme) - (+e.textContent);
+        document.getElementById("ecran").innerHTML = e.textContent
+      }
       operateur = "aucun"
     }))
 
@@ -48,6 +53,14 @@ window.addEventListener("load", () => {
     let equal = document.querySelector("[data-action='calculate']");
     equal.addEventListener("click", () => {
       document.getElementById("ecran").innerHTML = resultat
+      operateur = "equal"
+    })
+
+    let clear = document.querySelector("[data-action='clear']");
+    clear.addEventListener("click", () => {
+      resultat = 0
+      document.getElementById("ecran").innerHTML = resultat
+      operateur = "aucun"
     })
 
     function updateDisplayFromContext(a) {
