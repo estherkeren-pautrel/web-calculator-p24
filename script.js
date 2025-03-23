@@ -15,12 +15,7 @@ window.addEventListener("load", () => {
     let debut = true
 
     elements.forEach((e)=> e.addEventListener("click", () => {
-      if (operateur == "aucun"){
         updateDisplayFromContext(e.textContent)
-      }
-      else {
-        document.getElementById("ecran").innerHTML = e.textContent
-      }
       console.log(resultat)
     }))
 
@@ -30,6 +25,7 @@ window.addEventListener("load", () => {
       operateur = "plus"
       console.log(resultat)
       debut = false
+      document.getElementById("ecran").innerHTML = ""
     })
 
     let moins = document.querySelector("[data-action='subtract']");
@@ -38,6 +34,7 @@ window.addEventListener("load", () => {
       operateur = "moins"
       console.log(resultat)
       debut = false
+      document.getElementById("ecran").innerHTML = ""
     })
 
     let fois = document.querySelector("[data-action='multiply']");
@@ -46,6 +43,7 @@ window.addEventListener("load", () => {
       operateur = "fois"
       console.log(resultat)
       debut = false
+      document.getElementById("ecran").innerHTML = ""
     })
 
     let diviser = document.querySelector("[data-action='divide']");
@@ -54,6 +52,7 @@ window.addEventListener("load", () => {
       operateur = "diviser"
       console.log(resultat)
       debut = false
+      document.getElementById("ecran").innerHTML = ""
     })
     //empêcher la division par 0...
 
@@ -104,7 +103,7 @@ window.addEventListener("load", () => {
 
     function updateDisplayFromContext(a) {
         let affichage = document.getElementById("ecran").innerHTML
-        if (affichage == 0) {
+        if (affichage == 0 || affichage == "") {
          document.getElementById("ecran").innerHTML = a} 
        else {document.getElementById("ecran").innerHTML += a}
       }
