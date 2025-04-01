@@ -19,6 +19,16 @@ window.addEventListener("load", () => {
       console.log(resultat)
     }))
 
+
+    let decimal = document.querySelector("[data-action='decimal']");
+    decimal.addEventListener("click", () => {
+      result() //check
+      document.getElementById("ecran").innerHTML += "." //checker les types pour que cela fasse le calcul!! avec .!!
+      operateur = "decimal" //check
+      console.log(resultat)
+      debut = false //check
+    })
+
     let plus = document.querySelector("[data-action='add']");
     plus.addEventListener("click", () => {
       result()
