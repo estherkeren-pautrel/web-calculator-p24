@@ -22,7 +22,6 @@ window.addEventListener("load", () => {
 
     let decimal = document.querySelector("[data-action='decimal']");
     decimal.addEventListener("click", () => {
-      result() //check
       document.getElementById("ecran").innerHTML += "." //checker les types pour que cela fasse le calcul!! avec .!!
       operateur = "decimal" //check
       console.log(resultat)
@@ -31,7 +30,7 @@ window.addEventListener("load", () => {
 
     let plus = document.querySelector("[data-action='add']");
     plus.addEventListener("click", () => {
-      result()
+      calcul()
       operateur = "plus"
       console.log(resultat)
       debut = false
@@ -40,7 +39,7 @@ window.addEventListener("load", () => {
 
     let moins = document.querySelector("[data-action='subtract']");
     moins.addEventListener("click", () => {
-      result()
+      calcul()
       operateur = "moins"
       console.log(resultat)
       debut = false
@@ -49,7 +48,7 @@ window.addEventListener("load", () => {
 
     let fois = document.querySelector("[data-action='multiply']");
     fois.addEventListener("click", () => {
-      result()
+      calcul()
       operateur = "fois"
       console.log(resultat)
       debut = false
@@ -58,7 +57,7 @@ window.addEventListener("load", () => {
 
     let diviser = document.querySelector("[data-action='divide']");
     diviser.addEventListener("click", () => {
-      result()
+      calcul()
       operateur = "diviser"
       console.log(resultat)
       debut = false
@@ -80,13 +79,13 @@ window.addEventListener("load", () => {
         document.getElementById("ecran").innerHTML = 0
       }
       else {
-        result()
+        calcul()
         console.log(resultat)
         document.getElementById("ecran").innerHTML = resultat 
       }
     })
 
-    function result() {
+    function calcul() {
       if (debut) {
         let terme = document.getElementById("ecran").innerHTML;
         resultat = (+terme);
@@ -106,7 +105,12 @@ window.addEventListener("load", () => {
       }
       else if (operateur == "diviser") {
         let terme = document.getElementById("ecran").innerHTML;
-        resultat = resultat / (+terme);
+        if (+terme === 0) {
+          alert("Erreur : Division par zéro impossible.");
+          resultat = 0;
+      } else {
+          resultat = resultat / (+terme);
+      }
       }
     }
 
